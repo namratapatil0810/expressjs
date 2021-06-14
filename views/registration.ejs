@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+    <div class="header-container">
+        <h5 style="margin: 0; text-align: right;">Already Register?
+            <a href="/login" style="color:white">Login</a>
+            here
+        </h5>
+    </div>
+    <div class="row">
+        <div class="col col-80" style="float:none;">
+            <div class="container">
+                <form action="/addStudent" method="POST">
+                    <h2>
+                        <center>Student Registartion</center>
+                    </h2>
+                    <div class="row">
+                        <div class="col col-20"> <label>Name:</label></div>
+                        <div class="col col-80"> <input class="input-box" type="text" name="username"
+                                placeholder="Enter Your Name" required minlength="3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-20"> <label>Roll No:</label></div>
+                        <div class="col col-80"> <input class="input-box" type="text" name="rollno"
+                                placeholder="Enter Your Roll No" required minlength="2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-20"> <label>Email Id:</label></div>
+                        <div class="col col-80"> <input class="input-box" type="text" name="emailId"
+                                placeholder="Enter Your Email Id" required pattern="[^]+@[^]+[.][a-z]{2,63}$">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-20"> <label>Password:</label></div>
+                        <div class="col col-80"> <input class="input-box" type="password" name="password"
+                                placeholder="********" required minlength="8">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-20"> <label>Std:</label></div>
+                        <div class="col col-80">
+                            <select class="input-box" name="std" id="std" onchange="onStdSelect()" required>
+                                <option value=""></option>
+                                <option value="1">1st</option>
+                                <option value="2">2nd</option>
+                                <option value="3">3rd</option>
+                                <option value="4">4th</option>
+                                <option value="5">5th</option>
+                                <option value="6">6th</option>
+                                <option value="7">7th</option>
+                                <option value="8">8th</option>
+                                <option value="9">9th</option>
+                                <option value="10">10th</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="all-marks"> </div>
+
+                    <% if (data) { %>
+                        <p class="error-msg">
+                            <%= data.message %>
+                        </p>
+                        <% } %>
+                            <div class="row">
+                                <center><input class="input-btn"
+                                        style=" width: 20% !important; display: inline-block !important;" type="submit"
+                                        value="Save">
+                                </center>
+                            </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var x = 0;
+    function onStdSelect() {
+        var x = document.getElementById("std").value;
+        var data = '';
+        for (i = 1; i < x; i++) {
+            data += '<div class="row"><div class="col col-20"> <label>' + i + ' Std:</label></div><div class="col col-40"> <select class="input-box" name="' + i + '_std_remark" required><option value=""></option><option value="pass">Pass</option><option value="failed">Failed</option></select> </div><div class="col col-40"><input class="input-box"  type="text"name="' + i + '_std_percentage" placeholder="Percentage" required maxlength="2"></div></div>'
+        }
+        document.getElementById("all-marks").innerHTML = data;
+    }
+</script>
+
+</html>

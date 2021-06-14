@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+    <div class="header-container"></div>
+    <div class="row">
+        <div class="col col-50"></div>
+        <div class="col col-50">
+            <div class="container">
+                <div class="row">
+                    <form action="/login" method="POST">
+                        <h2>
+                            <center>Log In to Your Account</center>
+                        </h2>
+                        <div class="col col-100">
+                            <input class="input-box" type="text" name="emailId" placeholder="Enter Your Email ID"
+                                required pattern="[^]+@[^]+[.][a-z]{2,63}$" />
+                            <input class="input-box" type="password" name="password" placeholder="*******" required />
+                            <input class="input-btn" type="submit" value="Login" />
+                            <% if (data) { %>
+                                <p class="error-msg">
+                                    <%= data.message %>
+                                </p>
+                                <% } %>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col col-100">
+                        <h5 style="margin: 0; text-align: center">
+                            Haven't Register?
+                            <a href="/registration" style="color: white">Register</a>
+                            here
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
